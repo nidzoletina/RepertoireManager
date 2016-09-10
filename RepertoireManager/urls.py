@@ -20,8 +20,9 @@ from Repertoire import views
 
 
 urlpatterns = [
-    url(r'^repertoire/', include('Repertoire.urls')),
+    url(r'^Repertoire/', include('Repertoire.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.check, name='check'),
-    url(r'^', views.check, name='check')
+    # url(r'^$', views.check, name='check'),
+    # url(r'^', views.check, name='check')
+    # url(r'^', views.check),
 ]
