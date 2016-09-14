@@ -20,15 +20,21 @@
 </html>
 	
 	</br>
-	Page is Working!
+	{% if error_message %}
+	Error
+	{% endif %}
+	
 
 	</br>
+	<br>
 
-	<ul>
-		{% for song in songs %}
-		    <li>{{ song }}</li>
-		{% endfor %}
-	</ul>
+
+	<form action="{% url 'Repertoire:AddSong' %}" method='post'>
+	{% csrf_token %}
+	Song Name:<input type="text" name="SongName"><br>
+	<input type="submit" value="Add Song">
+
+	</form>
 
 	<form>
 	
