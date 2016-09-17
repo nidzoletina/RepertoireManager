@@ -2,12 +2,12 @@ from django.db import models
 # from 
 # Create your models here.
 
-# from Repertoire.models import song
+from Repertoire.models import song
 
-class song(models.Model):
-	name = models.CharField(max_length=200)
-	def __str__(self):
-		return self.name
+# class song(models.Model):
+# 	name = models.CharField(max_length=200)
+# 	def __str__(self):
+# 		return self.name
 
 
 class Performance(models.Model):
