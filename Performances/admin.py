@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 # from Repertoire.models import song
-from .models import SongOrder, Performance, song
+from .models import SongOrder, Performance
 
 class SongOrderInLine(admin.TabularInline):
 	model = SongOrder
@@ -12,9 +12,9 @@ class PerformanceAdmin(admin.ModelAdmin):
 	# list_display = ('name', SongOrderInLine)
 	inlines = (SongOrderInLine,)
 
-# class SongAdmin(admin.ModelAdmin):
-# 	inlines = (song, )
+# # class SongAdmin(admin.ModelAdmin):
+# # 	inlines = (song, )
 
 
 admin.site.register(Performance, PerformanceAdmin)
-admin.site.register(song)
+# admin.site.register(song)

@@ -17,11 +17,12 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from Repertoire import views
 
-
+# app_name = 'Root_App'
 
 urlpatterns = [
     url(r'^Repertoire/', include('Repertoire.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^[aA]dmin/', admin.site.urls),
+    # url(r'^)
     # url(r'^$', views.check, name='check'),
     # url(r'^', views.check, name='check')
     # url(r'^', views.check),

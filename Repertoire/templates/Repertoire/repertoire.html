@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>The HTML5 Herald</title>
+  <title>Repertoar</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
 
@@ -20,7 +20,7 @@
 </html>
 	
 	</br>
-	Page is Working!
+	
 
 	</br>
 
@@ -30,8 +30,12 @@
 		{% endfor %}
 	</ul>
 
-	<form>
-	
+
+	<form action="{% url 'Repertoire:AddSong' %}" method='post'>
+	{% csrf_token %}
+	Song Name:<input type="text" name="SongName"><br>
+	<input type="submit" value="Add Song">
+
 	</form>
 
 

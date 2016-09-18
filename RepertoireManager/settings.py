@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Repertoire.apps.RepertoireConfig', 
-    # 'Performances.apps.PerformancesConfig',
+    'Performances.apps.PerformancesConfig',
 ]
 
 MIDDLEWARE_CLASSES = [
