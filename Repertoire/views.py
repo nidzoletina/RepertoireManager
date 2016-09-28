@@ -2,36 +2,31 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from .models import song
-from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
+
 # Create your views here.
 
-
-@login_required
-def index(request):
-	SongsInRepertoire = song.objects.all().order_by('name')
-	return render(request, 'Repertoire/repertoire.html', { 'songs' : SongsInRepertoire} )
-
-# def check(request):
-# 	return HttpResponse("Check")
-# @login_required()
 def Repertoire(request):
-	# if not request.user_is_authenticated:
-	# 	return HttpResponse("Page Not Found")
+	if request.user.is_authenticated():		
+		SongsInRepertoire = song.objects.all().order_by('name')
+		return render(request, 'Repertoire/repertoire.html', { 'username' : request.user, 'loggedin' : True, 'songs' : SongsInRepertoire} )
+	else:
+		return render(request, 'Repertoire/repertoire.html', { 'username': request.user, 'loggedin' : False } )
+  	
+def Login(request):	
+	username = request.POST.get('username')
+	password = request.POST.get('password')
+	user = authenticate(username=username, password=password)
+	if user is not None:
+		login(request, user)
+	return HttpResponseRedirect(reverse("Repertoire:Repertoire"))
 
-	SongsInRepertoire = song.objects.all().order_by('name')
-	return render(request, 'Repertoire/repertoire.html', { 'songs' : SongsInRepertoire} )
-
-def AddSongPage(request):
-	return render(request, 'Repertoire/AddSong.html' )
-
-def PageNotFound(request):
-	# raise Http404("Page Not Found")
-	return HttpResponse("Page Not Found")
+def Logout(request):
+	logout(request)
+	return HttpResponseRedirect(reverse("Repertoire:Repertoire"))
 
 def AddSong(request):
 	s = song(name=request.POST['SongName'])
 	s.save()
-	return HttpResponseRedirect(reverse("Repertoire:index"))
-
-# 	a = AddSongPage(request)
-# 	return a
+	return HttpResponseRedirect(reverse("Repertoire:Repertoire"))

@@ -15,15 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from Repertoire import views
+# import Repertoire.views as Rep
+# from django.contrib.auth import views as auth_views
+# import django as django
 
-# app_name = 'Root_App'
+
 
 urlpatterns = [
     url(r'^Repertoire/', include('Repertoire.urls')),
     url(r'^[aA]dmin/', admin.site.urls),
-    # url(r'^)
-    # url(r'^$', views.check, name='check'),
-    # url(r'^', views.check, name='check')
-    # url(r'^', views.check),
+    # url(r'^login', auth_views.login, name='login' ), 
+    # url(r'^Repertoire/', Rep.Repertoire, name="Repertoire" ),
+   
 ]
+    
