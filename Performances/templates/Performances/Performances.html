@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Repertoar</title>
+  <title>Performances</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
 
@@ -42,21 +42,27 @@
 </div>
 	
 	{% if loggedin %}
+		</br>
+
+	<form action="{% url 'Performances:test' %}" method='post'>
+	{% csrf_token %}
+	<label for="Performances">Choose a performance: </label>
+	<select onchange="this.form.submit()" name="Performances">
+			{% for Performance in Performances %}
+		    <option value="{{ Performance }}" {% if Performance == CurrentSelection %}selected{% endif%}>{{Performance}}</option>
+			{% endfor %}
+	</select>		
+	
+	</form>
+	
 	</br></br>
 
 	<ul>
-		{% for song in songs %}
+		{% for song in Songs %}
 		    <li>{{ song }}</li>
 		{% endfor %}
 	</ul>
 
-
-	<form action="{% url 'Repertoire:AddSong' %}" method='post'>
-	{% csrf_token %}
-	Song Name:<input type="text" name="SongName"><br>
-	<input type="submit" value="Add Song">
-
-	</form>
 	{% endif %}
 
 </body>

@@ -23,6 +23,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^Repertoire/', include('Repertoire.urls')),
+    url(r'^Performances/', include('Performances.urls')),
     url(r'^[aA]dmin/', admin.site.urls),
     # url(r'^login', auth_views.login, name='login' ), 
     # url(r'^Repertoire/', Rep.Repertoire, name="Repertoire" ),
